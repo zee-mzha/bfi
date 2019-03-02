@@ -66,6 +66,7 @@ int main(int argc, char **argv){
 					printf("failed to allocate memory for file: %s\n", argv[i]);
 					break;
 			}
+			continue;
 		}
 
 		bfFileParse(&file);
