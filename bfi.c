@@ -47,13 +47,30 @@ void bfParseLoop(bfFile *file);
 
 int main(int argc, char **argv){
 	if(argc == 1){
+		printf("proper usage: %s file.bf file2.bf file3.bf ...\n", argv[0]);
 		return 0;
 	}
 
-	bfFile file;
-	bfFileLoad(argv[1], &file);
-	bfFileParse(&file);
-	bfFileDestroy(&file);
+	for(int i = 1; i < argc; i++){
+		bfFile file;
+		int ret = bfFileLoad(argv[i], &file);
+		if(res != BFI_OK){
+			switch(res){
+				case BFI_FILE_OPEN:
+					printf("failed to open file: %s\n", argv[i]);
+					break;
+				case BFI_FILE_READ:
+					printf("failed to read file: %s\n", argv[i]);
+					break;
+				case BFI_MEM:
+					printf("failed to allocate memory for file: %s\n", argv[i]);
+					break;
+			}
+		}
+
+		bfFileParse(&file);
+		bfFileDestroy(&file);
+	}
 
 	return 0;
 }
