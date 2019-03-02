@@ -54,8 +54,8 @@ int main(int argc, char **argv){
 	for(int i = 1; i < argc; i++){
 		bfFile file;
 		int ret = bfFileLoad(argv[i], &file);
-		if(res != BFI_OK){
-			switch(res){
+		if(ret != BFI_OK){
+			switch(ret){
 				case BFI_FILE_OPEN:
 					printf("failed to open file: %s\n", argv[i]);
 					break;
