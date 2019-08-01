@@ -1,5 +1,6 @@
-# BrainFuck Interpreter
-its self explanatory is it not?
+# Brainf*ck Interpreter
+
+usage:
 
 `bfi myfile.bf`
 
